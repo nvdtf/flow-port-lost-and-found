@@ -46,7 +46,7 @@ access(all) fun main(sender: Address, contractAddress: Address, contractName: St
         let estimate <- LostAndFound.estimateDeposit(redeemer: receiver, item: <-ft, memo: nil, display: nil)
         let item <- estimate.withdraw()
         c!.deposit(from: <- (item as! @{FungibleToken.Vault}))
-        storageCost = estimate.storageFee
+        storageCost = estimate.storageFee * 1.2
         destroy estimate
     }
 

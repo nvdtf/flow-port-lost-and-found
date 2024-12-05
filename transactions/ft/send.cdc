@@ -54,7 +54,8 @@ transaction(contractAddress: Address, contractName: String, amount: UFix64, reci
 
         // Estimate the deposit
         let depositEstimate <- LostAndFound.estimateDeposit(redeemer: recipient, item: <-self.sentVault, memo: memo, display: nil)
-        let storageFee <- self.flowProvider.borrow()!.withdraw(amount: depositEstimate.storageFee)
+        // let storageFee <- self.flowProvider.borrow()!.withdraw(amount: depositEstimate.storageFee)
+        let storageFee <- self.flowProvider.borrow()!.withdraw(amount: depositEstimate.storageFee * 1.2)
         let r <- depositEstimate.withdraw()
 
         // Send to LostAndFound
